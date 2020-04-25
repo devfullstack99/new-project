@@ -11,8 +11,6 @@ var UserSchema = new Schema({
     role: { type: String, enum :['USER','ADMIN'],default:'USER', required: true  },
     CreatedDate: { type: Date, default: Date.now }
 
-   
-
 });
 
 UserSchema.methods.authenticate = function (password) {

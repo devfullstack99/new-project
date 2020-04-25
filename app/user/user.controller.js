@@ -1,6 +1,6 @@
-var User = require('mongoose').model('user')
-    , passport = require('passport')
-    , jwt = require('jwt-simple');
+var User = require('mongoose').model('user');
+    var passport = require('passport');
+    var jwt = require('jwt-simple');
 config = require("../../config/config"),
     bcrypt = require('bcryptjs');
 
@@ -105,36 +105,6 @@ userCtrl.encryptPassword = function (req, res, next) {
 };
 
 
-// userCtrl.memberinfo = function (req, res) {
-//     var token = getToken(req.headers);
-//     if (token) {
-//         var decoded = jwt.decode(token, config.secret);
-//         var promise = User.findOne({
-//             userName: decoded.userName
-//         }).exec();
-//         promise.then(function (user) {
-//             res.json({
-//                 success: true,
-//                  msg: 'Welcome in the member area ' + user.userName + '!'
-//             });
-//         })
-
-//             .catch(function (error) {
-//                 return res.status(403).send({
-//                     success: false,
-//                      msg: 'Authentication failed. User not found.'
-//                 });
-//             })
-
-//     }
-
-//     else {
-//         return res.status(403).send({
-//             success: false
-//             , msg: 'No token provided.'
-//         });
-//     }
-// };
 getToken = function (headers) {
     if (headers && headers.authorization) {
         var parted = headers.authorization.split(' ');
@@ -149,10 +119,7 @@ getToken = function (headers) {
         return null;
     }
 };
-// userCtrl.logout = function (req, res) {
-//     req.logout();
-//     res.redirect('/');
-// };
+
 userCtrl.create = function (req, res, next) {
     var user = new User(req.body);
     var promise = UserSchema.save();
